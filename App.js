@@ -106,6 +106,13 @@ export default function App() {
             </Text>
             : null
         }
+        {
+          Platform.OS === 'ios'
+            ? <Text style={styles.textStyle}>
+              [iOS] StatusBar Network Visible : {networkVisible}
+            </Text>
+            : null
+        }
       </View>
       <View style={styles.button}>
         <Button
