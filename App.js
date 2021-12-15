@@ -112,8 +112,7 @@ export default function App() {
         {
           Platform.OS === 'ios'
             ? <Text style={styles.textStyle}>
-              [iOS] showHideTransition :{'\n'}
-              {statusBarTransition}
+              [iOS] showHideTransition : {statusBarTransition}
             </Text>
             : null
         }
