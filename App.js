@@ -119,7 +119,7 @@ export default function App() {
         {
           Platform.OS === 'ios'
             ? <Text style={styles.textStyle}>
-              [iOS] networkActivityIndicatorVisible : {networkVisible ? "true" : "false"}}
+              [iOS] networkActivityIndicatorVisible : {networkVisible ? "true" : "false"}
             </Text>
             : null
         }
