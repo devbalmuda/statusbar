@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { Platform, StyleSheet, Text, View, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 
 const STYLES = ['auto', 'dark', 'light', 'inverted'];
@@ -59,6 +59,17 @@ export default function App() {
     }
   };
 
+  const Button = ({title,onPress})=>{
+    return(
+      <Pressable 
+        onPress={onPress}
+        style={styles.button}
+      >
+        <Text style={styles.buttontext}>{title}</Text>
+      </Pressable>
+    )
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar
@@ -72,7 +83,7 @@ export default function App() {
       />
       <View style={styles.textContainer}>
         <Text style={styles.textStyle}>
-          StatusBar Visibility : {hidden ? 'Hidden' : 'Visible'}
+          StatusBar Hidden : {hidden ? 'Hidden' : 'Visible'}
         </Text>
         <Text style={styles.textStyle}>
           StatusBar Style : {statusBarStyle}
@@ -101,7 +112,7 @@ export default function App() {
         {
           Platform.OS === 'ios'
             ? <Text style={styles.textStyle}>
-              [iOS] StatusBar Transition:{'\n'}
+              [iOS] showHideTransition :{'\n'}
               {statusBarTransition}
             </Text>
             : null
@@ -109,26 +120,26 @@ export default function App() {
         {
           Platform.OS === 'ios'
             ? <Text style={styles.textStyle}>
-              [iOS] StatusBar Network Visible : {networkVisible}
+              [iOS] networkActivityIndicatorVisible : {networkVisible}
             </Text>
             : null
         }
       </View>
       <View style={styles.button}>
         <Button
-          title="Toggle StatusBar"
+          title="StatusBar Hidden"
           onPress={changeStatusBarVisibility}
         />
       </View>
       <View style={styles.button}>
         <Button
-          title="Change StatusBar Style"
+          title="StatusBar Style"
           onPress={changeStatusBarStyle}
         />
       </View>
       <View style={styles.button}>
         <Button
-          title="Animated StatusBar"
+          title="StatusBar Animated"
           onPress={changeStatusBarAnimated}
         />
       </View>
@@ -136,7 +147,7 @@ export default function App() {
         Platform.OS === 'android'
           ? <View style={styles.button}>
             <Button
-              title="[Android] Change StatusBar Translucent "
+              title="[Android] Translucent "
               onPress={changeStatusBarTranslucent}
             />
           </View>
@@ -146,7 +157,7 @@ export default function App() {
         Platform.OS === 'android'
           ? <View style={styles.button}>
             <Button
-              title="[Android] Change StatusBar BackgroundColor "
+              title="[Android] StatusBar BackgroundColor "
               onPress={changeStatusBarColor}
             />
           </View>
@@ -156,7 +167,7 @@ export default function App() {
         Platform.OS === 'ios'
           ? <View style={styles.button}>
             <Button
-              title="[iOS] Change StatusBar Transition"
+              title="[iOS] StatusBar ShowHideTransition "
               onPress={changeStatusBarTransition}
             />
           </View>
@@ -166,7 +177,7 @@ export default function App() {
         Platform.OS === 'ios'
           ? <View style={styles.button}>
             <Button
-              title="[iOS] Change StatusBar Network Visible"
+              title="[iOS] StatusBar NetworkActivityIndicatorVisible"
               onPress={changeStatusBarNetworkVisible}
             />
           </View>
@@ -184,6 +195,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textContainer:{
+    width: "80%",
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
@@ -192,7 +204,12 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 10,
+    borderRadius:10,
     width: "80%",
+    backgroundColor:"#008af7"
+  },
+  buttontext:{
+    color:"#FFF"
   },
   textStyle: {
     color: "#FFF",
